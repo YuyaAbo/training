@@ -4,7 +4,7 @@
 //
 
 // ---------- 変数定義 ----------
-var result	= 0;	// 一つ前の計算結果
+var result	=  0;	// 一つ前の計算結果
 var num		= '';	// 現在保持している数字
 var preKey	= '';	// 直前に入力された記号
 var nextKey	= '';	// 次の計算のための記号
@@ -19,7 +19,7 @@ function numBtnPush(btn){
 		num += ''+btn;
 	}
 
-	document.getElementById("result").innerHTML = num;
+	document.getElementById("output").innerHTML = num;
 }
 
 // 記号ボタンが押された際に呼ばれる
@@ -31,11 +31,10 @@ function keyBtnPush(key) {
 		preKey = nextKey;
 		result = calc(preKey, result, num);
 		nextKey = key;
-		document.getElementById("result").innerHTML = result;
+		document.getElementById("output").innerHTML = result;
 	};
 
 	num = '';
-	console.log("(num,result) = (%d,%d)\n(preKey,nextKey) = (%s,%s)", num, result, preKey, nextKey);
 
 	document.getElementById("type").innerHTML = nextKey;
 }
@@ -68,7 +67,7 @@ function allClear(){
 	preKey 	= '';
 	nextKey = '';
 
-	document.getElementById("result").innerHTML = '0';
+	document.getElementById("output").innerHTML = '0';
 	document.getElementById("type").innerHTML = '';
 }
 
@@ -79,7 +78,7 @@ function equal(){
 		num = 0;
 		key = "";
 		console.log("result = %d",result);
-		document.getElementById("result").innerHTML = result;
+		document.getElementById("output").innerHTML = result;
 	};
 	key = "E";
 }
