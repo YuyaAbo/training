@@ -1,18 +1,30 @@
+/*
+	style.css
+	Author: YuyaAbo
+*/
+
 * {
 	margin: 0;
 	padding: 0;
-	color: #333333;
+	color: #1b1f3b;
 }
 
 body {
-	background-color: #FFE3BD;
+	background-color: #1B1F3B;
 	text-align: center;
 }
 
-div#output {
+#output {
 	font-size: 80px;
-	color: #07313A;
-	margin: 
+	color: #fffcf9;
+	margin: 0;
+}
+
+#type {
+	height: 30px;
+	font-size: 20px;
+	color: #fffcf9;
+	margin: 0;
 }
 
 .numBtn {
@@ -20,7 +32,7 @@ div#output {
 	width: 30px;
 	height: 30px;
 	margin: 2px;
-	background-color: #BAB7A3;
+	background-color: #fffcf9;
 }
 
 .keyBtn {
@@ -28,5 +40,5 @@ div#output {
 	width: 30px;
 	height: 30px;
 	margin: 2px;
-	background-color: #EB5252;
+	background-color: #c2f970;
 }
