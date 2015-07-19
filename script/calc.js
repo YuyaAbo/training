@@ -45,6 +45,26 @@ function calc(key, result, num) {
 	}
 }
 
+// 記号ボタンが押された際の関数
+function keyBtnPush(key) {
+	if (preKey == '') {
+		preKey = nextKey = key;
+		result = Number(num);
+		num = '';
+	} else {
+		preKey = nextKey;
+		result = calc(preKey, result, num);
+		num = '';
+		nextKey = key;
+		console.log("result = %d", result);
+		document.getElementById("result").innerHTML = result;
+	};
+
+	console.log("(num,result) = (%d,%d)\n(preKey,nextKey) = (%s,%s)", num, result, preKey, nextKey);
+
+	document.getElementById("type").innerHTML = nextKey;
+}
+
 // 足し算
 function add(){
 	if (preKey == '') {
