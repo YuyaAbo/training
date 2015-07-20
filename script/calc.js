@@ -19,7 +19,7 @@ function numBtnPush(btn){
 		num += ''+btn;
 	}
 
-	document.getElementById("output").innerHTML = num;
+	document.getElementById("output").innerHTML = num.toLocaleString();
 }
 
 // 記号ボタンが押された際に呼ばれる
@@ -27,13 +27,16 @@ function keyBtnPush(key) {
 	if (preKey == '') {
 		preKey = nextKey = key;
 		result = Number(num);
-	} else {
+	} else if (num == '') { 
+		preKey = nextKey = key;
+	}else {
 		preKey = nextKey;
 		result = calc(preKey, result, num);
 		nextKey = key;
-		document.getElementById("output").innerHTML = result;
+		document.getElementById("output").innerHTML = result.toLocaleString();
 	};
 
+	console.log("(result,num) = (%d,%d)",result,num);
 	num = '';
 
 	document.getElementById("type").innerHTML = nextKey;
