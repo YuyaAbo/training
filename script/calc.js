@@ -19,7 +19,7 @@ function numBtnPush(btn){
 		num += ''+btn;
 	}
 
-	document.getElementById("output").innerHTML = num.toLocaleString();
+	document.getElementById("output").innerHTML = Number(num).toLocaleString();
 }
 
 // 記号ボタンが押された際に呼ばれる
@@ -42,7 +42,7 @@ function keyBtnPush(key) {
 	document.getElementById("type").innerHTML = nextKey;
 }
 
-// keyに対応した計算を実行して結果を返す
+// keyに対応した四則演算を実行して結果を返す
 function calc(key, result, num) {
 	switch (key) {
 		case '+':
@@ -76,12 +76,9 @@ function allClear(){
 
 // イコール（未実装）
 function equal(){
-	if (isFinite(key)) {
-		result += Number(num);
-		num = 0;
-		key = "";
-		console.log("result = %d",result);
-		document.getElementById("output").innerHTML = result;
-	};
-	key = "E";
+	if (preKey != '' || num != '') {
+		result = calc(nextKey, result, num);
+		preKey = '';
+		document.getElementById("output").innerHTML = result.toLocaleString();
+	}
 }
