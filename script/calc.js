@@ -27,16 +27,14 @@ function keyBtnPush(key) {
 	if (preKey == '') {
 		preKey = nextKey = key;
 		result = Number(num);
-	} else if (num == '') { 
+	} else if (num == '' || preKey == 'E') { 
 		preKey = nextKey = key;
 	}else {
+		result = calc(nextKey, result, num);
 		preKey = nextKey;
-		result = calc(preKey, result, num);
 		nextKey = key;
 		document.getElementById("output").innerHTML = result.toLocaleString();
 	};
-
-	console.log("(result,num) = (%d,%d)",result,num);
 	num = '';
 
 	document.getElementById("type").innerHTML = nextKey;
@@ -74,11 +72,11 @@ function allClear(){
 	document.getElementById("type").innerHTML = '';
 }
 
-// イコール（未実装）
+// イコール関数：連続して入力した場合はx+y=zの+yに相当する部分を使いまわす
 function equal(){
 	if (preKey != '' || num != '') {
 		result = calc(nextKey, result, num);
-		preKey = '';
+		preKey = 'E';
 		document.getElementById("output").innerHTML = result.toLocaleString();
 	}
 }
