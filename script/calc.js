@@ -16,13 +16,15 @@ function numBtnPush(btn){
 	if (num == '') {
 		num = btn;
 	} else {
-		num += ''+btn;
+		if (String(num).length < 15) {	// 桁数制限
+			num += ''+btn;
+		}
 	}
 
 	document.getElementById("output").innerHTML = Number(num).toLocaleString();
 }
 
-// 記号ボタンが押された際に呼ばれる
+// 四則演算ボタンが押された際に呼ばれる
 function keyBtnPush(key) {
 	if (preKey == '') {
 		preKey = nextKey = key;
@@ -34,7 +36,7 @@ function keyBtnPush(key) {
 		preKey = nextKey;
 		nextKey = key;
 		document.getElementById("output").innerHTML = result.toLocaleString();
-	};
+	}
 	num = '';
 
 	document.getElementById("type").innerHTML = nextKey;
@@ -61,7 +63,7 @@ function calc(key, result, num) {
 	}
 }
 
-// 全ての変数と表示内容をクリア
+// 全ての変数と表示内容を初期化
 function allClear(){
 	result	= 0;
 	num 	= '';
@@ -72,7 +74,7 @@ function allClear(){
 	document.getElementById("type").innerHTML = '';
 }
 
-// イコール関数：連続して入力した場合はx+y=zの+yに相当する部分を使いまわす
+// イコール関数：連続して入力した場合はx+y=zの+yに相当する部分を使いまわして計算する
 function equal(){
 	if (preKey != '' || num != '') {
 		result = calc(nextKey, result, num);
